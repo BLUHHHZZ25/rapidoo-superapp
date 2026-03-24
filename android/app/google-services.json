@@ -1,0 +1,105 @@
+{
+  "project_info": {
+    "project_number": "222785080267",
+    "project_id": "superapp-rapidoo",
+    "storage_bucket": "superapp-rapidoo.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:222785080267:android:0c93e1c1c1bb1b3c79844e",
+        "android_client_info": {
+          "package_name": "com.rapidoophsuperapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "222785080267-ju32c28etsevfmurrdfh7k5s1dtnqe00.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8V_1JileOmCAGJbvVsLSwevl4WsswgRI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "222785080267-915vkp00vgvndls8oini0v712nqlmuvq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:222785080267:android:c60d12cfff04844a79844e",
+        "android_client_info": {
+          "package_name": "com.rapidoophsuperapp.production"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "222785080267-ju32c28etsevfmurrdfh7k5s1dtnqe00.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8V_1JileOmCAGJbvVsLSwevl4WsswgRI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "222785080267-915vkp00vgvndls8oini0v712nqlmuvq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:222785080267:android:d7966d2b183eed1679844e",
+        "android_client_info": {
+          "package_name": "com.rapidoophsuperapp.staging"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "222785080267-fqeopgrk5rbrki103bq8o1gp9lin1i15.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rapidoophsuperapp.staging",
+            "certificate_hash": "4d0720ec7e203c4907f25ce9c730e7c2e672666a"
+          }
+        },
+        {
+          "client_id": "222785080267-ju32c28etsevfmurrdfh7k5s1dtnqe00.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8V_1JileOmCAGJbvVsLSwevl4WsswgRI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "222785080267-915vkp00vgvndls8oini0v712nqlmuvq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

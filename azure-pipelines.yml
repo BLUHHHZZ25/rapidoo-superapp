@@ -1,0 +1,40 @@
+# Gradle
+# Build your Java project and run tests with Gradle using a Gradle wrapper script.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- merge_base_new
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+# Install Node.js if React Native
+- task: NodeTool@0
+  inputs:
+    versionSpec: '22.19.0'
+  displayName: 'Install Node.js'
+
+# Install dependencies
+- script: npm install --legacy-peer-deps
+  displayName: 'Install dependencies'
+
+# Setup Android environment
+- script: |
+    # Set Android SDK path (Azure DevOps Ubuntu agents have Android SDK pre-installed)
+    export ANDROID_HOME=$ANDROID_HOME
+    export ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT
+    echo "##vso[task.setvariable variable=ANDROID_HOME]$ANDROID_HOME"
+    echo "##vso[task.setvariable variable=ANDROID_SDK_ROOT]$ANDROID_SDK_ROOT"
+    
+    # Accept Android licenses
+    yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
+  displayName: 'Setup Android environment'
+
+# Build
+- script: |
+    cd android
+    chmod +x gradlew
+    ./gradlew clean build --info --stacktrace --no-daemon
+  displayName: 'Build Android'
