@@ -1,80 +1,140 @@
+# Rapidoo Superapp
 
-1. git clone <project>
+A React Native mobile application (Android & iOS) providing multi-service capabilities: parcel delivery, wallet/payments, activity tracking, and user profile management.
 
-2. npm install
+## Requirements
 
-3. npm run android
+- Node >= 20
+- React Native development environment set up ([guide](https://reactnative.dev/docs/set-up-your-environment))
+- Android Studio (for Android) / Xcode (for iOS)
 
-4. add to package.json
+## Getting Started
 
-{
-  "name": "rapidoophsuperapp",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "lint": "eslint .",
-    "start": "react-native start",
-    "test": "jest"
-  },
-  "dependencies": {
-    "@babel/plugin-proposal-decorators": "^7.23.9",
-    "@fortawesome/fontawesome-free": "^6.5.1",
-    "@fortawesome/fontawesome-svg-core": "^6.5.1",
-    "@nozbe/watermelondb": "^0.27.1",
-    "@react-native-firebase/app": "^18.8.0",
-    "@react-navigation/bottom-tabs": "^6.5.11",
-    "@react-navigation/native": "^6.1.9",
-    "@react-navigation/native-stack": "^6.9.17",
-    "@reduxjs/toolkit": "^2.1.0",
-    "@rneui/base": "^4.0.0-rc.7",
-    "@rneui/themed": "^4.0.0-rc.8",
-    "axios": "^1.6.7",
-    "lottie-react-native": "^6.6.0",
-    "nativewind": "^2.0.11",
-    "react": "18.2.0",
-    "react-native": "0.73.4",
-    "react-native-device-info": "^10.12.0",
-    "react-native-gesture-handler": "^2.15.0",
-    "react-native-mmkv": "^2.11.0",
-    "react-native-modal": "^13.0.1",
-    "react-native-paper": "^5.12.3",
-    "react-native-reanimated": "^3.6.2",
-    "react-native-reanimated-carousel": "^3.5.1",
-    "react-native-safe-area-context": "^4.9.0",
-    "react-native-screens": "^3.29.0",
-    "react-native-svg": "^14.1.0",
-    "react-native-version-info": "^1.1.1",
-    "react-redux": "^9.1.0",
-    "redux": "^5.0.1",
-    "redux-thunk": "^3.1.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.20.0",
-    "@babel/preset-env": "^7.20.0",
-    "@babel/runtime": "^7.20.0",
-    "@react-native/babel-preset": "0.73.21",
-    "@react-native/eslint-config": "0.73.2",
-    "@react-native/metro-config": "0.73.5",
-    "@react-native/typescript-config": "0.73.1",
-    "@types/react": "^18.2.6",
-    "@types/react-test-renderer": "^18.0.0",
-    "babel-jest": "^29.6.3",
-    "eslint": "^8.19.0",
-    "jest": "^29.6.3",
-    "prettier": "2.8.8",
-    "react-test-renderer": "18.2.0",
-    "tailwindcss": "^3.3.2",
-    "typescript": "5.0.4"
-  },
-  "engines": {
-    "node": ">=18"
-  }
-}
+```bash
+# 1. Clone the repository
+git clone <repository-url>
+cd rapidoo-superapp
 
+# 2. Install dependencies
+npm install
 
+# 3. Set up environment variables
+cp .env.staging .env  # or .env.production
 
-# rapidoo_superapp
-# rapidoo_superapp
-# rapidoo-superapp
+# 4. Run the app
+npm run android   # Android
+npm run ios       # iOS
+```
+
+## Environment Variables
+
+Create `.env.staging` or `.env.production` at the project root:
+
+```env
+GOOGLE_API_KEY=
+GOOGLE_AUTOCOMPLETE_URL=
+GOOGLE_DETAILS_URL=
+SIGN_APP_KEY=
+SIGN_APP_SECRET=
+COUPON_SECRET=
+VARIANT=STAGING        # or PRODUCTION
+LOCAL_BASE_URL=
+autorization=
+z_app=customer
+z_app_type=mobile
+z_app_version=
+z_app_code=
+```
+
+## Scripts
+
+```bash
+npm run android          # Run on Android
+npm run ios              # Run on iOS
+npm run start            # Start Metro bundler
+npm run lint             # ESLint
+npm test                 # Jest tests
+
+# Run on a specific emulator
+npx react-native run-android --deviceId emulator-5556
+```
+
+## Tech Stack
+
+| Category | Technology |
+|----------|-----------|
+| Framework | React Native 0.81.1, React 19.1.0, TypeScript 5.8.3 |
+| State | Redux Toolkit 2.8.2 + react-redux 9.2.0 |
+| Navigation | @react-navigation (native-stack, bottom-tabs) |
+| Local DB | WatermelonDB 0.28.0 (SQLite, schema v16) |
+| HTTP | Axios 1.11.0 |
+| UI | React Native Paper 5.14.5, @rneui/themed, Lottie, Reanimated 4 |
+| Maps | react-native-maps, Nominatim (reverse geocoding) |
+| Auth | Google Sign-In, OTP, react-native-keychain |
+| Firebase | app, messaging, crashlytics, analytics, in-app-messaging |
+| Notifications | @notifee/react-native + FCM + WebSocket |
+| Build | Metro bundler, Babel, Azure Pipelines CI/CD |
+
+## Project Structure
+
+```
+/
+├── App.tsx                          # Root component (Redux provider + navigation)
+├── index.js                         # Entry point
+├── src/
+│   ├── Config.js                    # Environment variables & API base URLs
+│   ├── app/
+│   │   ├── redux/
+│   │   │   ├── store.ts
+│   │   │   └── reducers/            # Redux slices
+│   │   ├── watermelonDB/
+│   │   │   ├── model/               # Schema, migrations, query functions
+│   │   │   └── db/                  # DB models
+│   │   ├── assets/                  # Images, SVGs, fonts, Lottie animations
+│   │   └── constants/
+│   ├── apis/
+│   │   ├── client/                  # Axios clients per service
+│   │   ├── endpoints/endpoints.ts   # All API endpoint definitions
+│   │   └── baseRequests.ts
+│   ├── components/
+│   │   ├── screens/                 # Screen components
+│   │   ├── navigations/             # Navigation setup
+│   │   ├── common/
+│   │   ├── modal/
+│   │   └── map/
+│   ├── services/
+│   │   ├── websocket/
+│   │   └── notification.tsx
+│   ├── utils/                       # Utility functions
+│   └── types/                       # TypeScript type definitions
+```
+
+## API Microservices
+
+Each service has its own Axios client and base URL configured via `.env`:
+
+| Client | Service |
+|--------|---------|
+| `clientIAM` | Authentication, user identity, OTP |
+| `clientAdmin` | Services list, app updates, payment options, coupons |
+| `clientParcel` | Parcel delivery, vehicle, transactions, riders |
+| `clientWallet` | Wallet account, cash-in, transactions, payments |
+| `clientActivity` | User activity history |
+
+**WebSocket:** `wss://[staging|iam].rapidooph.com/iam/app-service/ws`
+
+## Local Database
+
+WatermelonDB (SQLite), schema version **16**.
+
+Tables: `registration`, `parcel_transaction`, `services`, `app_info`, `app_updates`, `report_issues`, `booking`, `booking_details`, `update_config`
+
+Migrations: `src/app/watermelonDB/model/migrations.ts` — always increment schema version when adding tables or columns.
+
+## Code Style
+
+- **Prettier** — 2-space indentation, single quotes, trailing commas
+- **ESLint** — extends `@react-native`
+- **TypeScript** — strict mode via `@react-native/typescript-config`
+
+Run `npm run lint` before committing.
